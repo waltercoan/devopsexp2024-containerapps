@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="layout :: htmlhead"></head>
+    <style th:inline="css">
+        body {
+            background-color: [[${backgroundcolor}]];
+        }
+    </style>
+    </style>
+    <body>
+        <main class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="devops.png" alt="DevOps Exp" >
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Novo Participante</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/}" method="POST" th:object="${participante}">
+
+                    <div class="form-group">
+                        <label for="txtnome">Nome</label>
+                        <input type="text" id="txtnome"
+                            th:field="*{nome}" class="form-control">
+                        <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtcidade">Cidade</label>
+                        <input type="text" id="txtcidade"
+                            th:field="*{cidade}" class="form-control">
+                        <p th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}" class="alert alert-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtobs">Observação</label>
+                        <input type="text" id="txtobs"
+                            th:field="*{observacao}" class="form-control">
+                            
+                    </div>
+                    <p th:if="${errormsg}" th:text="${errormsg}" class="alert alert-danger"></p>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-primary"
+                            type="submit">Cadastrar</button> 
+                    </div>
+                </form>
+
+                </div>
+            </div>
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Listagem de Participantes</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table" id="tabparticipantes">
+                        <thead>
+                            <th>Nome</th>
+                            <th>Cidade</th>
+                            <th>Observação</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr th:each="participante : ${listaParticipantes}">
+                                <td th:text="${participante.nome}"></td>
+                                <td th:text="${participante.cidade}"></td>
+                                <td th:text="${participante.observacao}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>
