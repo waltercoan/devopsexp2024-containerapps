@@ -7,6 +7,10 @@
 ### Proposta
 O Azure Container Apps é um serviço que simplifica a implantação de sistemas baseados na arquitetura de microservices utilizando de forma totalmente gerenciada no Kubernetes. A proposta desta palestra é apresentar as principais funcionalidades do Azure Container Apps.
 
+### Youtube
+[![Youtube](https://img.youtube.com/vi/zcjQGDYWx_U/0.jpg)](https://www.youtube.com/watch?v=zcjQGDYWx_U)
+
+
 ### Slides
 - [Download](slides/ContainerApps-Setembro-2024.pdf)
 
